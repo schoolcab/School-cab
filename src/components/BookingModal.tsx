@@ -1,19 +1,31 @@
-import { useState } from "react";
-import { X, MapPin, School, CreditCard, CheckCircle, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { useRazorpay, RazorpayOrderOptions } from "react-razorpay";
 import { RAZORPAY_CONFIG } from "@/lib/razorpay";
+import {
+  CheckCircle,
+  Clock,
+  CreditCard,
+  MapPin,
+  School,
+  X,
+} from "lucide-react";
+import { useState } from "react";
+import { RazorpayOrderOptions, useRazorpay } from "react-razorpay";
 
 interface BookingModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
-
 
 const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
   const [step, setStep] = useState(1);
@@ -33,14 +45,23 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
   const { error, isLoading, Razorpay } = useRazorpay();
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const handleContinue = () => {
-    if (!formData.currentAddress || !formData.school || !formData.studentName || !formData.parentName || !formData.phoneNumber || !formData.pickupTime || !formData.dropTime) {
+    if (
+      !formData.currentAddress ||
+      !formData.school ||
+      !formData.studentName ||
+      !formData.parentName ||
+      !formData.phoneNumber ||
+      !formData.pickupTime ||
+      !formData.dropTime
+    ) {
       toast({
         title: "Missing Information",
-        description: "Please fill in all required fields including pickup and drop times.",
+        description:
+          "Please fill in all required fields including pickup and drop times.",
         variant: "destructive",
       });
       return;
@@ -76,17 +97,17 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
     }
 
     setIsProcessing(true);
-    
+
     const options: RazorpayOrderOptions = {
       key: RAZORPAY_CONFIG.KEY_ID,
       amount: RAZORPAY_CONFIG.SUBSCRIPTION_AMOUNT,
       currency: RAZORPAY_CONFIG.CURRENCY,
       name: RAZORPAY_CONFIG.COMPANY_NAME,
-      description: 'Monthly School Cab Subscription',
-      image: '/favicon.ico',
-      order_id: 'order_' + Date.now(),
+      description: "Monthly School Cab Subscription",
+      image: "/favicon.ico",
+      order_id: "order_" + Date.now(),
       handler: (response) => {
-        console.log('Payment Success:', response);
+        console.log("Payment Success:", response);
         setIsProcessing(false);
         setStep(3);
         toast({
@@ -96,7 +117,7 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
       },
       prefill: {
         name: formData.parentName,
-        email: '',
+        email: "",
         contact: formData.phoneNumber,
       },
       notes: {
@@ -105,7 +126,7 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
         student: formData.studentName,
         pickupTime: formData.pickupTime,
         dropTime: formData.dropTime,
-        specialInstructions: formData.specialInstructions || '',
+        specialInstructions: formData.specialInstructions || "",
       },
       theme: {
         color: RAZORPAY_CONFIG.THEME_COLOR,
@@ -118,8 +139,8 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
             description: "You can try again when ready.",
             variant: "destructive",
           });
-        }
-      }
+        },
+      },
     };
 
     const razorpayInstance = new Razorpay(options);
@@ -150,9 +171,13 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-border">
           <h2 className="text-2xl font-bold text-foreground">
-            {step === 1 ? "Book Your Ride" : step === 2 ? "Confirm & Pay" : "Booking Confirmed"}
+            {step === 1
+              ? "Book Your Ride"
+              : step === 2
+              ? "Confirm & Pay"
+              : "Booking Confirmed"}
           </h2>
-          <button 
+          <button
             onClick={resetForm}
             className="p-2 hover:bg-muted rounded-lg transition-colors"
           >
@@ -165,7 +190,10 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
           <div className="p-6 space-y-6">
             <div className="space-y-4">
               <div>
-                <Label htmlFor="currentAddress" className="text-foreground font-medium">
+                <Label
+                  htmlFor="currentAddress"
+                  className="text-foreground font-medium"
+                >
                   Current Address *
                 </Label>
                 <div className="relative mt-2">
@@ -174,7 +202,9 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
                     id="currentAddress"
                     placeholder="Enter your full pickup address..."
                     value={formData.currentAddress}
-                    onChange={(e) => handleInputChange("currentAddress", e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("currentAddress", e.target.value)
+                    }
                     className="pl-10 resize-none"
                     rows={3}
                   />
@@ -191,7 +221,9 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
                     id="school"
                     placeholder="Enter school name..."
                     value={formData.school}
-                    onChange={(e) => handleInputChange("school", e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("school", e.target.value)
+                    }
                     className="pl-10"
                   />
                 </div>
@@ -199,26 +231,36 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="studentName" className="text-foreground font-medium">
+                  <Label
+                    htmlFor="studentName"
+                    className="text-foreground font-medium"
+                  >
                     Student Name *
                   </Label>
                   <Input
                     id="studentName"
                     placeholder="Student's name"
                     value={formData.studentName}
-                    onChange={(e) => handleInputChange("studentName", e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("studentName", e.target.value)
+                    }
                     className="mt-2"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="parentName" className="text-foreground font-medium">
+                  <Label
+                    htmlFor="parentName"
+                    className="text-foreground font-medium"
+                  >
                     Parent Name *
                   </Label>
                   <Input
                     id="parentName"
                     placeholder="Your name"
                     value={formData.parentName}
-                    onChange={(e) => handleInputChange("parentName", e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("parentName", e.target.value)
+                    }
                     className="mt-2"
                   />
                 </div>
@@ -226,26 +268,36 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="phoneNumber" className="text-foreground font-medium">
+                  <Label
+                    htmlFor="phoneNumber"
+                    className="text-foreground font-medium"
+                  >
                     Phone Number *
                   </Label>
                   <Input
                     id="phoneNumber"
-                    placeholder="+91 98765 43210"
+                    placeholder="+91 9560029986"
                     value={formData.phoneNumber}
-                    onChange={(e) => handleInputChange("phoneNumber", e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("phoneNumber", e.target.value)
+                    }
                     className="mt-2"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="alternateNumber" className="text-foreground font-medium">
+                  <Label
+                    htmlFor="alternateNumber"
+                    className="text-foreground font-medium"
+                  >
                     Alternate Number
                   </Label>
                   <Input
                     id="alternateNumber"
                     placeholder="Optional"
                     value={formData.alternateNumber}
-                    onChange={(e) => handleInputChange("alternateNumber", e.target.value)}
+                    onChange={(e) =>
+                      handleInputChange("alternateNumber", e.target.value)
+                    }
                     className="mt-2"
                   />
                 </div>
@@ -258,7 +310,12 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
                   </Label>
                   <div className="relative mt-2">
                     <Clock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground z-10" />
-                    <Select value={formData.pickupTime} onValueChange={(value) => handleInputChange("pickupTime", value)}>
+                    <Select
+                      value={formData.pickupTime}
+                      onValueChange={(value) =>
+                        handleInputChange("pickupTime", value)
+                      }
+                    >
                       <SelectTrigger className="pl-10">
                         <SelectValue placeholder="Select pickup time" />
                       </SelectTrigger>
@@ -280,7 +337,12 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
                   </Label>
                   <div className="relative mt-2">
                     <Clock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground z-10" />
-                    <Select value={formData.dropTime} onValueChange={(value) => handleInputChange("dropTime", value)}>
+                    <Select
+                      value={formData.dropTime}
+                      onValueChange={(value) =>
+                        handleInputChange("dropTime", value)
+                      }
+                    >
                       <SelectTrigger className="pl-10">
                         <SelectValue placeholder="Select drop time" />
                       </SelectTrigger>
@@ -299,21 +361,26 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
               </div>
 
               <div>
-                <Label htmlFor="specialInstructions" className="text-foreground font-medium">
+                <Label
+                  htmlFor="specialInstructions"
+                  className="text-foreground font-medium"
+                >
                   Special Instructions
                 </Label>
                 <Textarea
                   id="specialInstructions"
                   placeholder="Any special pickup instructions or requirements..."
                   value={formData.specialInstructions}
-                  onChange={(e) => handleInputChange("specialInstructions", e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange("specialInstructions", e.target.value)
+                  }
                   className="mt-2 resize-none"
                   rows={2}
                 />
               </div>
             </div>
 
-            <Button 
+            <Button
               onClick={handleContinue}
               className="w-full bg-gradient-primary hover:opacity-90 transition-opacity"
               size="lg"
@@ -327,11 +394,15 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
         {step === 2 && (
           <div className="p-6 space-y-6">
             <div className="bg-muted p-4 rounded-lg">
-              <h3 className="font-semibold text-foreground mb-2">Booking Summary</h3>
+              <h3 className="font-semibold text-foreground mb-2">
+                Booking Summary
+              </h3>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Student:</span>
-                  <span className="text-foreground">{formData.studentName}</span>
+                  <span className="text-foreground">
+                    {formData.studentName}
+                  </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">School:</span>
@@ -347,7 +418,9 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">Pickup:</span>
-                  <span className="text-foreground text-right max-w-[60%]">{formData.currentAddress}</span>
+                  <span className="text-foreground text-right max-w-[60%]">
+                    {formData.currentAddress}
+                  </span>
                 </div>
               </div>
             </div>
@@ -361,10 +434,12 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
                 </div>
                 <CreditCard className="h-8 w-8 opacity-80" />
               </div>
-              <p className="text-sm opacity-90 mt-2">Final price based on distance • Includes GPS tracking</p>
+              <p className="text-sm opacity-90 mt-2">
+                Final price based on distance • Includes GPS tracking
+              </p>
             </div>
 
-            <Button 
+            <Button
               onClick={initiatePayment}
               disabled={isProcessing}
               className="w-full bg-gradient-primary hover:opacity-90 transition-opacity"
@@ -381,16 +456,21 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
             <div className="bg-green-100 p-6 rounded-full w-20 h-20 mx-auto flex items-center justify-center">
               <CheckCircle className="h-10 w-10 text-green-600" />
             </div>
-            
+
             <div>
-              <h3 className="text-2xl font-bold text-foreground mb-2">Booking Confirmed!</h3>
+              <h3 className="text-2xl font-bold text-foreground mb-2">
+                Booking Confirmed!
+              </h3>
               <p className="text-muted-foreground">
-                Thank you for choosing SchoolCab Connect! Our team will contact you soon to finalize your pickup schedule and driver details.
+                Thank you for choosing SchoolCab Connect! Our team will contact
+                you soon to finalize your pickup schedule and driver details.
               </p>
             </div>
 
             <div className="bg-muted p-4 rounded-lg text-left">
-              <h4 className="font-semibold text-foreground mb-2">What's Next?</h4>
+              <h4 className="font-semibold text-foreground mb-2">
+                What's Next?
+              </h4>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• Our team will call you within 24 hours</li>
                 <li>• Driver details will be shared with you</li>
@@ -399,11 +479,7 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
               </ul>
             </div>
 
-            <Button 
-              onClick={resetForm}
-              className="w-full"
-              variant="outline"
-            >
+            <Button onClick={resetForm} className="w-full" variant="outline">
               Close
             </Button>
           </div>
