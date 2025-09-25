@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { MapPin, Clock, Shield, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-taxi.jpg";
 import BookingModal from "./BookingModal";
 
@@ -75,13 +76,15 @@ const Hero = () => {
               <MapPin className="h-5 w-5 mr-2" />
               Book Your Ride Now
             </Button>
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="border-primary text-primary hover:bg-primary/10 text-lg px-8 py-6 relative z-10 cursor-pointer"
-            >
-              Download App
-            </Button>
+            <Link to="/downloads">
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-primary text-primary hover:bg-primary/10 text-lg px-8 py-6 relative z-10 cursor-pointer"
+              >
+                Download App
+              </Button>
+            </Link>
           </div>
           
           {/* Stats */}

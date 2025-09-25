@@ -1,11 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Mail, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <header className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 border-b border-border">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <div className="flex items-center space-x-3">
+        <Link to="/" className="flex items-center space-x-3 hover:opacity-90 transition-opacity">
           <img
             src="/lovable-uploads/3b19e97a-ab06-4f26-97ca-4ce58a6e0592.png"
             alt="School Cab Logo"
@@ -17,15 +18,15 @@ const Header = () => {
               Safe School Transport
             </p>
           </div>
-        </div>
+        </Link>
 
         <nav className="hidden md:flex items-center space-x-6">
-          <a
-            href="#home"
+          <Link
+            to="/"
             className="text-foreground hover:text-primary transition-colors"
           >
             Home
-          </a>
+          </Link>
           <a
             href="#services"
             className="text-foreground hover:text-primary transition-colors"
