@@ -68,19 +68,19 @@ const Hero = () => {
           
           {/* CTA */}
           <div className="flex flex-col sm:flex-row gap-4 relative z-10">
-            <Button 
-              size="lg" 
-              className="bg-gradient-primary hover:opacity-90 transition-opacity text-lg px-8 py-6 relative z-10 cursor-pointer"
+            <Button
+              size="lg"
+              className="w-full sm:w-auto bg-gradient-primary hover:opacity-90 transition-opacity text-lg px-8 py-6 relative z-10 cursor-pointer"
               onClick={() => setIsBookingOpen(true)}
             >
               <MapPin className="h-5 w-5 mr-2" />
               Book Your Ride Now
             </Button>
-            <Link to="/downloads">
+            <Link to="/downloads" className="w-full sm:w-auto">
               <Button
                 variant="outline"
                 size="lg"
-                className="border-primary text-primary hover:bg-primary/10 text-lg px-8 py-6 relative z-10 cursor-pointer"
+                className="w-full border-primary text-primary hover:bg-primary/10 text-lg px-8 py-6 relative z-10 cursor-pointer"
               >
                 Download App
               </Button>
