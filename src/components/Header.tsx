@@ -27,24 +27,19 @@ const Header = () => {
           >
             Home
           </Link>
-          <a
-            href="#services"
-            className="text-foreground hover:text-primary transition-colors"
-          >
-            Services
-          </a>
+
           <a
             href="#features"
             className="text-foreground hover:text-primary transition-colors"
           >
             Features
           </a>
-          <a
-            href="#contact"
+          <Link
+            to="/contact"
             className="text-foreground hover:text-primary transition-colors"
           >
             Contact
-          </a>
+          </Link>
         </nav>
 
         <div className="flex items-center space-x-4">
@@ -62,7 +57,12 @@ const Header = () => {
             variant="default"
             className="bg-gradient-primary hover:opacity-90 transition-opacity"
           >
-            Book Now
+            <Link
+              to="https://docs.google.com/forms/d/e/1FAIpQLSfsAskXtQ9DARPUE1quLk2sUzhnRTmiyl0CsPyEyyQXFsu17g/viewform?fbclid=PAZnRzaAOLhG5leHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAafIiqYI3zb74N7Yrra9s1qFC-vHb9YPgJ32BEuj3T4CzWOyJxH8yWsx-IRXhA_aem_g26j--hFqTw63B34zB5lXA&utm_source=ig&utm_medium=social&utm_content=link_in_bio"
+              target="_blank"
+            >
+              Book Now
+            </Link>
           </Button>
         </div>
       </div>

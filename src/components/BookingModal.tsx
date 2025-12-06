@@ -11,6 +11,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { RAZORPAY_CONFIG } from "@/lib/razorpay";
+import { supabase } from "@/lib/supabase";
 import {
   CheckCircle,
   Clock,
@@ -48,7 +49,7 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleContinue = () => {
+  const handleContinue = async () => {
     if (
       !formData.currentAddress ||
       !formData.school ||
@@ -66,7 +67,38 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
       });
       return;
     }
-    setStep(2);
+
+    // Save booking data to Supabase
+    try {
+      const { error } = await supabase.from("website_lead_booking").insert({
+        current_address: formData.currentAddress,
+        school: formData.school,
+        student_name: formData.studentName,
+        parent_name: formData.parentName,
+        phone_number: formData.phoneNumber,
+        alternate_number: formData.alternateNumber || null,
+        pickup_time: formData.pickupTime,
+        drop_time: formData.dropTime,
+        special_instructions: formData.specialInstructions || null,
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Booking Request Submitted!",
+        description: "Your booking details have been saved. Our team will contact you soon.",
+      });
+    } catch (error) {
+      console.error("Error saving booking:", error);
+      toast({
+        title: "Submission Error",
+        description: "Failed to save booking details. Please try again.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setStep(3);
   };
 
   const initiatePayment = () => {
@@ -174,8 +206,8 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
             {step === 1
               ? "Book Your Ride"
               : step === 2
-              ? "Confirm & Pay"
-              : "Booking Confirmed"}
+                ? "Confirm & Pay"
+                : "Booking Confirmed"}
           </h2>
           <button
             onClick={resetForm}

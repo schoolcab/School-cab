@@ -12,7 +12,7 @@ const Hero = () => {
     <section id="home" className="min-h-screen bg-gradient-hero relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,hsl(var(--taxi-yellow))_0%,transparent_50%)] opacity-5"></div>
-      
+
       <div className="container mx-auto px-4 py-20 grid lg:grid-cols-2 gap-12 items-center min-h-screen">
         {/* Content */}
         <div className="space-y-8 animate-fade-in">
@@ -21,18 +21,18 @@ const Hero = () => {
               <Shield className="h-4 w-4 mr-2" />
               Safe & Reliable School Transport
             </div>
-            
+
             <h1 className="text-4xl md:text-6xl font-bold text-foreground leading-tight">
               Safe School Rides
               <span className="block text-primary">Every Day</span>
             </h1>
-            
+
             <p className="text-xl text-muted-foreground max-w-lg">
-              Professional school cab service ensuring your child's safe journey to and from school. 
+              Professional school cab service ensuring your child's safe journey to and from school.
               Trusted by thousands of parents across the city.
             </p>
           </div>
-          
+
           {/* Features */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="flex items-center space-x-3 bg-card p-4 rounded-lg shadow-soft">
@@ -44,7 +44,7 @@ const Hero = () => {
                 <p className="text-sm text-muted-foreground">Always punctual</p>
               </div>
             </div>
-            
+
             <div className="flex items-center space-x-3 bg-card p-4 rounded-lg shadow-soft">
               <div className="bg-primary/10 p-2 rounded-lg">
                 <Shield className="h-5 w-5 text-primary" />
@@ -54,7 +54,7 @@ const Hero = () => {
                 <p className="text-sm text-muted-foreground">Verified drivers</p>
               </div>
             </div>
-            
+
             <div className="flex items-center space-x-3 bg-card p-4 rounded-lg shadow-soft">
               <div className="bg-primary/10 p-2 rounded-lg">
                 <Star className="h-5 w-5 text-primary" />
@@ -65,7 +65,7 @@ const Hero = () => {
               </div>
             </div>
           </div>
-          
+
           {/* CTA */}
           <div className="flex flex-col sm:flex-row gap-4 relative z-10">
             <Button
@@ -86,7 +86,7 @@ const Hero = () => {
               </Button>
             </Link>
           </div>
-          
+
           {/* Stats */}
           <div className="flex items-center space-x-8 pt-8">
             <div className="text-center">
@@ -103,24 +103,24 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Hero Image */}
         <div className="relative animate-slide-up">
           <div className="relative">
-            <img 
-              src={heroImage} 
-              alt="School Cab Service" 
+            <img
+              src={heroImage}
+              alt="School Cab Service"
               className="w-full h-auto rounded-2xl shadow-strong"
             />
-            <div className="absolute -top-4 -right-4 bg-primary text-primary-foreground p-4 rounded-xl shadow-medium animate-bounce-soft">
+            {/* <div className="absolute -top-4 -right-4 bg-primary text-primary-foreground p-4 rounded-xl shadow-medium animate-bounce-soft">
               <div className="text-center">
                 <p className="text-lg font-bold">Starts from</p>
                 <p className="text-2xl font-bold">₹299</p>
                 <p className="text-sm">Per Month</p>
               </div>
-            </div>
+            </div> */}
           </div>
-          
+
           {/* Floating Elements */}
           <div className="absolute -bottom-6 -left-6 bg-card p-4 rounded-xl shadow-medium animate-float">
             <div className="flex items-center space-x-2">
@@ -130,7 +130,7 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      
+
       <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
     </section>
   );

@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AccountDeletion from "./pages/AccountDeletion";
+import Contact from "./pages/Contact";
 import Downloads from "./pages/Downloads";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
@@ -28,6 +29,7 @@ const App = () => (
             path="/terms-and-conditions"
             element={<TermsAndConditions />}
           />
+          <Route path="/contact" element={<Contact />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
