@@ -74,7 +74,7 @@ const Footer = () => {
           </div>
 
           {/* Services */}
-          <div className="space-y-6">
+          {/* <div className="space-y-6">
             <h3 className="text-lg font-semibold">Services</h3>
             <nav className="space-y-3">
               <a
@@ -114,7 +114,7 @@ const Footer = () => {
                 Driver App
               </a>
             </nav>
-          </div>
+          </div> */}
 
           {/* Contact Info */}
           <div className="space-y-6">
@@ -134,22 +134,7 @@ const Footer = () => {
                   <p className="text-gray-400 text-sm">General Inquiries</p>
                 </div>
               </div>
-              <div className="flex items-start space-x-3">
-                <MapPin className="h-5 w-5 text-primary mt-1" />
-                <div>
-                  <p className="text-white">A39, Nirmal Vihar Najafgarh</p>
-                  <p className="text-gray-400 text-sm">
-                    New Delhi, India 110043
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-3">
-                <Clock className="h-5 w-5 text-primary mt-1" />
-                <div>
-                  <p className="text-white">6:00 AM - 10:00 PM</p>
-                  <p className="text-gray-400 text-sm">Service Hours</p>
-                </div>
-              </div>
+
             </div>
           </div>
         </div>

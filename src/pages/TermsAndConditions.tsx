@@ -1,355 +1,242 @@
-import { Car, FileText, Shield, Users } from "lucide-react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { Scale, ArrowLeft } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const TermsAndConditions = () => {
-  const handleGoBack = () => {
-    window.history.back();
-  };
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-50 to-amber-50">
-      <div className="container mx-auto px-4 py-8">
-        <div className="max-w-4xl mx-auto">
-          <div className="mb-6">
-            {/* <Button 
-              variant="outline" 
-              onClick={handleGoBack}
-              className="mb-4 border-yellow-300 text-yellow-800 hover:bg-yellow-100"
-            >
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Back
-            </Button> */}
-            <div className="bg-white rounded-lg shadow-lg border-l-4 border-yellow-400 p-8">
-              <div className="flex items-center mb-4">
-                <FileText className="h-8 w-8 text-yellow-600 mr-3" />
-                <h1 className="text-3xl font-bold text-gray-900">
-                  Terms and Conditions
-                </h1>
-              </div>
-              <p className="text-yellow-600 mb-6">
-                Last updated: {new Date().toLocaleDateString()}
+    <div className="min-h-screen bg-background">
+      <Header />
+
+      <main className="container mx-auto px-4 py-12">
+        {/* Back Button */}
+        <Link
+          to="/"
+          className="inline-flex items-center text-muted-foreground hover:text-primary mb-8 transition-colors"
+        >
+          <ArrowLeft className="h-4 w-4 mr-2" />
+          Back to Home
+        </Link>
+
+        {/* Header */}
+        <div className="mb-8">
+          <div className="inline-flex items-center bg-purple-100 text-purple-600 px-4 py-2 rounded-full text-sm font-medium mb-4">
+            <Scale className="h-4 w-4 mr-2" />
+            Legal Terms
+          </div>
+          <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
+            Terms & Conditions
+          </h1>
+          <p className="text-muted-foreground mb-2">
+            Operative for Use of the SchoolCab Digital Platform
+          </p>
+          <p className="text-sm text-muted-foreground">
+            Mukman Technologies Private Limited<br />
+            A-39, Nirmal Vihar, Najafgarh, New Delhi<br />
+            Last Updated: 7th December 2025
+          </p>
+        </div>
+
+        {/* Content */}
+        <div className="bg-card rounded-xl p-6 md:p-8 shadow-soft border border-border space-y-8">
+
+          {/* Section 1 */}
+          <section>
+            <h2 className="text-xl font-bold text-foreground mb-4">1. PRELIMINARY PROVISIONS</h2>
+            <div className="space-y-4 text-muted-foreground">
+              <p>
+                <strong>1.1</strong> These Terms & Conditions ("Terms") constitute a legally binding agreement between the user ("User") and Mukman Technologies Private Limited ("Company"), governing the access to and utilization of the SchoolCab application, website, systems, and associated services ("Platform").
               </p>
+              <p>
+                <strong>1.2</strong> By accessing, browsing, downloading, registering, or otherwise using the Platform, the User expressly acknowledges and agrees to be bound by these Terms. If the User does not concur with any provision herein, the User is required to immediately cease use of the Platform.
+              </p>
+              <p>
+                <strong>1.3</strong> For the avoidance of doubt, the Platform merely facilitates interactions between Parents/Students and independent third-party Drivers and Van Owners. SchoolCab does not provide transportation services and assumes no role beyond that of a technological intermediary.
+              </p>
+            </div>
+          </section>
 
-              <div className="space-y-6 text-gray-700 leading-relaxed">
-                <section>
-                  <h2 className="text-xl font-semibold text-gray-900 mb-3 border-b-2 border-yellow-200 pb-1">
-                    1. Acceptance of Terms
-                  </h2>
-                  <p>
-                    By accessing and using School Cab services, you accept and
-                    agree to be bound by the terms and provision of this
-                    agreement. These Terms and Conditions govern your use of our
-                    transportation services, mobile application, and website.
-                  </p>
-                </section>
+          {/* Section 2 */}
+          <section>
+            <h2 className="text-xl font-bold text-foreground mb-4">2. NATURE OF PLATFORM & INTERMEDIARY STATUS</h2>
+            <div className="space-y-4 text-muted-foreground">
+              <p>
+                <strong>2.1</strong> The Company operates exclusively as a digital marketplace and intermediary as contemplated under the Information Technology Act, 2000 and the Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021.
+              </p>
+              <p>
+                <strong>2.2</strong> The Platform does not, at any point, own, operate, control, manage, or maintain any school van, bus, vehicle, transportation facility, or commuting service.
+              </p>
+              <p>
+                <strong>2.3</strong> All transportation-related actions, including but not limited to driving, routing, safety compliance, student handling, and vehicle maintenance, are the exclusive responsibility of the respective independent Driver or Van Owner.
+              </p>
+            </div>
+          </section>
 
-                <section>
-                  <h2 className="text-xl font-semibold text-gray-900 mb-3 border-b-2 border-yellow-200 pb-1 flex items-center">
-                    <Car className="h-5 w-5 mr-2 text-yellow-600" />
-                    2. Service Description
-                  </h2>
-                  <p className="mb-3">School Cab provides:</p>
-                  <ul className="list-disc list-inside ml-4 space-y-1">
-                    <li>School transportation services for students</li>
-                    <li>Route planning and scheduling management</li>
-                    <li>Real-time tracking and notifications</li>
-                    <li>Payment processing for transportation fees</li>
-                    <li>
-                      Communication platform between parents, schools, and
-                      drivers
-                    </li>
-                  </ul>
-                </section>
-
-                <section>
-                  <h2 className="text-xl font-semibold text-gray-900 mb-3 border-b-2 border-yellow-200 pb-1 flex items-center">
-                    <Users className="h-5 w-5 mr-2 text-yellow-600" />
-                    3. User Responsibilities
-                  </h2>
-                  <div className="space-y-4">
-                    <div>
-                      <h3 className="font-semibold text-gray-800 mb-2">
-                        Parents/Guardians must:
-                      </h3>
-                      <ul className="list-disc list-inside ml-4 space-y-1">
-                        <li>
-                          Provide accurate and current information about
-                          students
-                        </li>
-                        <li>
-                          Ensure students are ready for pickup at designated
-                          times
-                        </li>
-                        <li>Pay transportation fees promptly</li>
-                        <li>
-                          Notify us immediately of any changes to student
-                          information
-                        </li>
-                        <li>
-                          Supervise their children's behavior during
-                          transportation
-                        </li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-800 mb-2">
-                        Students must:
-                      </h3>
-                      <ul className="list-disc list-inside ml-4 space-y-1">
-                        <li>Follow all safety rules and driver instructions</li>
-                        <li>
-                          Remain seated with seatbelts fastened when provided
-                        </li>
-                        <li>
-                          Treat drivers, other students, and vehicles with
-                          respect
-                        </li>
-                        <li>
-                          Board and exit vehicles only at designated stops
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </section>
-
-                <section>
-                  <h2 className="text-xl font-semibold text-gray-900 mb-3 border-b-2 border-yellow-200 pb-1">
-                    4. Safety and Conduct
-                  </h2>
-                  <p className="mb-3">
-                    Safety is our top priority. The following conduct is
-                    strictly prohibited:
-                  </p>
-                  <ul className="list-disc list-inside ml-4 space-y-1">
-                    <li>
-                      Disruptive behavior that endangers safety or distracts
-                      drivers
-                    </li>
-                    <li>Vandalism or damage to vehicles</li>
-                    <li>Harassment, bullying, or inappropriate behavior</li>
-                    <li>
-                      Possession of prohibited items (weapons, illegal
-                      substances, etc.)
-                    </li>
-                    <li>Failure to follow emergency procedures</li>
-                  </ul>
-                  <p className="mt-3 p-3 bg-red-50 rounded-lg border-l-4 border-red-400 text-red-800">
-                    <strong>Violation Notice:</strong> Serious violations may
-                    result in immediate suspension of transportation services.
-                  </p>
-                </section>
-
-                <section>
-                  <h2 className="text-xl font-semibold text-gray-900 mb-3 border-b-2 border-yellow-200 pb-1">
-                    5. Payment Terms
-                  </h2>
-                  <div className="space-y-3">
-                    <div className="p-3 bg-yellow-50 rounded-lg">
-                      <h3 className="font-semibold text-yellow-800 mb-2">
-                        Fees and Billing
-                      </h3>
-                      <ul className="list-disc list-inside text-yellow-700 space-y-1">
-                        <li>
-                          Transportation fees are charged monthly in advance
-                        </li>
-                        <li>
-                          Payments are processed automatically unless otherwise
-                          arranged
-                        </li>
-                        <li>Late payments may incur additional fees</li>
-                        <li>Services may be suspended for non-payment</li>
-                      </ul>
-                    </div>
-                    <div className="p-3 bg-blue-50 rounded-lg">
-                      <h3 className="font-semibold text-blue-800 mb-2">
-                        Refund Policy
-                      </h3>
-                      <ul className="list-disc list-inside text-blue-700 space-y-1">
-                        <li>
-                          Refunds for unused services require 48-hour advance
-                          notice
-                        </li>
-                        <li>
-                          Emergency cancellations will be reviewed case-by-case
-                        </li>
-                        <li>
-                          No refunds for missed pickups due to student absence
-                        </li>
-                        <li>
-                          Service interruptions due to weather may qualify for
-                          credit
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </section>
-
-                <section>
-                  <h2 className="text-xl font-semibold text-gray-900 mb-3 border-b-2 border-yellow-200 pb-1">
-                    6. Service Availability
-                  </h2>
-                  <p className="mb-3">Our services are subject to:</p>
-                  <ul className="list-disc list-inside ml-4 space-y-1">
-                    <li>Weather conditions and safety assessments</li>
-                    <li>Vehicle maintenance and safety inspections</li>
-                    <li>Driver availability and scheduling</li>
-                    <li>School district policies and calendar</li>
-                    <li>Emergency situations and unforeseen circumstances</li>
-                  </ul>
-                  <p className="mt-3">
-                    We will provide reasonable notice of service interruptions
-                    when possible.
-                  </p>
-                </section>
-
-                <section>
-                  <h2 className="text-xl font-semibold text-gray-900 mb-3 border-b-2 border-yellow-200 pb-1 flex items-center">
-                    <Shield className="h-5 w-5 mr-2 text-yellow-600" />
-                    7. Liability and Insurance
-                  </h2>
-                  <div className="space-y-3">
-                    <p>
-                      <strong>Insurance Coverage:</strong> All vehicles are
-                      properly insured and meet state requirements for student
-                      transportation.
-                    </p>
-                    <p>
-                      <strong>Limitation of Liability:</strong> Our liability is
-                      limited to the extent permitted by law. We are not
-                      responsible for:
-                    </p>
-                    <ul className="list-disc list-inside ml-4 space-y-1">
-                      <li>Personal property loss or damage</li>
-                      <li>
-                        Delays due to traffic, weather, or circumstances beyond
-                        our control
-                      </li>
-                      <li>Injuries resulting from student misconduct</li>
-                      <li>Consequences of providing inaccurate information</li>
-                    </ul>
-                  </div>
-                </section>
-
-                <section>
-                  <h2 className="text-xl font-semibold text-gray-900 mb-3 border-b-2 border-yellow-200 pb-1">
-                    8. Privacy and Data Protection
-                  </h2>
-                  <p className="mb-3">
-                    We are committed to protecting your privacy:
-                  </p>
-                  <ul className="list-disc list-inside ml-4 space-y-1">
-                    <li>Student information is kept confidential and secure</li>
-                    <li>
-                      Location data is used solely for transportation services
-                    </li>
-                    <li>
-                      Information is shared only with authorized school
-                      personnel
-                    </li>
-                    <li>
-                      Data retention follows our Privacy Policy guidelines
-                    </li>
-                  </ul>
-                  <p className="mt-3">
-                    Please refer to our Privacy Policy for complete details on
-                    data handling.
-                  </p>
-                </section>
-
-                <section>
-                  <h2 className="text-xl font-semibold text-gray-900 mb-3 border-b-2 border-yellow-200 pb-1">
-                    9. Termination
-                  </h2>
-                  <p className="mb-3">Either party may terminate services:</p>
-                  <ul className="list-disc list-inside ml-4 space-y-1">
-                    <li>With 30 days written notice for regular termination</li>
-                    <li>Immediately for safety violations or non-payment</li>
-                    <li>
-                      Due to changes in school policies or district requirements
-                    </li>
-                    <li>For repeated violations of these terms</li>
-                  </ul>
-                  <p className="mt-3">
-                    Upon termination, all outstanding fees become immediately
-                    due.
-                  </p>
-                </section>
-
-                <section>
-                  <h2 className="text-xl font-semibold text-gray-900 mb-3 border-b-2 border-yellow-200 pb-1">
-                    10. Emergency Procedures
-                  </h2>
-                  <div className="p-4 bg-red-50 rounded-lg border-l-4 border-red-400">
-                    <h3 className="font-semibold text-red-800 mb-2">
-                      In Case of Emergency:
-                    </h3>
-                    <ul className="list-disc list-inside text-red-700 space-y-1">
-                      <li>
-                        Drivers are trained in emergency response procedures
-                      </li>
-                      <li>Emergency contacts will be notified immediately</li>
-                      <li>
-                        All vehicles are equipped with first aid kits and
-                        communication devices
-                      </li>
-                      <li>
-                        Emergency services will be contacted when necessary
-                      </li>
-                    </ul>
-                  </div>
-                </section>
-
-                <section>
-                  <h2 className="text-xl font-semibold text-gray-900 mb-3 border-b-2 border-yellow-200 pb-1">
-                    11. Changes to Terms
-                  </h2>
-                  <p>
-                    We reserve the right to modify these Terms and Conditions at
-                    any time. Users will be notified of significant changes via
-                    email or app notification. Continued use of our services
-                    constitutes acceptance of updated terms.
-                  </p>
-                </section>
-
-                <section>
-                  <h2 className="text-xl font-semibold text-gray-900 mb-3 border-b-2 border-yellow-200 pb-1">
-                    12. Contact Information
-                  </h2>
-                  <p className="mb-3">
-                    For questions about these Terms and Conditions or our
-                    services:
-                  </p>
-                  <div className="p-4 bg-yellow-50 rounded-lg border-l-4 border-yellow-400">
-                    <p>
-                      <strong>School Cab</strong>
-                    </p>
-                    <p>
-                      <strong>Email:</strong> legal@schoolcabcompass.com
-                    </p>
-                    <p>
-                      <strong>Phone:</strong> 1-800-SCHOOL-CAB
-                    </p>
-                    <p>
-                      <strong>Mailing Address:</strong> School Cab Legal
-                      Department
-                    </p>
-                    <p className="mt-2 text-sm text-yellow-700">
-                      Business Hours: Monday - Friday, 8:00 AM - 6:00 PM
-                    </p>
-                  </div>
-                </section>
-
-                <div className="mt-8 p-4 bg-gray-100 rounded-lg text-center">
-                  <p className="text-sm text-gray-600">
-                    By using School Cab services, you acknowledge that you have
-                    read, understood, and agree to be bound by these Terms and
-                    Conditions.
-                  </p>
-                </div>
+          {/* Section 3 */}
+          <section>
+            <h2 className="text-xl font-bold text-foreground mb-4">3. USER CATEGORIES AND THEIR OBLIGATIONS</h2>
+            <div className="space-y-6 text-muted-foreground">
+              <div>
+                <p className="font-semibold text-foreground mb-2">3.1 "Parent/Student Users" shall:</p>
+                <ul className="list-none space-y-2 ml-6">
+                  <li>(a) Furnish accurate and complete information regarding the student, residence, emergency contacts, and school details;</li>
+                  <li>(b) Ensure timely and full payment of subscription or service fees;</li>
+                  <li>(c) Adhere to safety directives, boarding protocols, and behavioural guidelines;</li>
+                  <li>(d) Acknowledge that the Company bears no liability arising from conduct, negligence, or acts of Drivers or Van Owners.</li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-semibold text-foreground mb-2">3.2 "Driver Users" shall:</p>
+                <ul className="list-none space-y-2 ml-6">
+                  <li>(a) Possess valid licenses, permits, government-mandated certifications, and compliance documents;</li>
+                  <li>(b) Maintain professional conduct, refrain from any behaviour endangering minors, and adhere to all statutory transportation norms;</li>
+                  <li>(c) Keep the GPS device/app active during operational hours;</li>
+                  <li>(d) Operate strictly as independent contractors with no employer–employee relationship with the Company.</li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-semibold text-foreground mb-2">3.3 "Van Owners" shall:</p>
+                <ul className="list-none space-y-2 ml-6">
+                  <li>(a) Maintain vehicle fitness, insurance, pollution certificates, safety equipment, and regulatory compliance;</li>
+                  <li>(b) Ensure that only verified Drivers operate their vehicles;</li>
+                  <li>(c) Accept full liability for mechanical failures, incidents, or breaches committed by their Drivers.</li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-semibold text-foreground mb-2">3.4 "Schools" may, where applicable:</p>
+                <ul className="list-none space-y-2 ml-6">
+                  <li>(a) Provide updated student lists;</li>
+                  <li>(b) Facilitate operational coordination;</li>
+                  <li>(c) Acknowledge that the Company is not a transport service provider.</li>
+                </ul>
               </div>
             </div>
+          </section>
+
+          {/* Section 4 */}
+          <section>
+            <h2 className="text-xl font-bold text-foreground mb-4">4. SERVICE MODALITIES</h2>
+            <div className="space-y-4 text-muted-foreground">
+              <p>
+                <strong>4.1</strong> The Platform merely provides:
+              </p>
+              <ul className="list-none space-y-2 ml-6">
+                <li>(i) technological routing assistance;</li>
+                <li>(ii) GPS-based location transparency;</li>
+                <li>(iii) digital fee collection and reconciliation;</li>
+                <li>(iv) communication tools for Users and Drivers;</li>
+                <li>(v) onboarding and verification workflows.</li>
+              </ul>
+              <p>
+                <strong>4.2</strong> The Company reserves the right to modify, enhance, suspend, or discontinue any component of the Platform at its exclusive discretion and without prior notice.
+              </p>
+            </div>
+          </section>
+
+          {/* Section 5 */}
+          <section>
+            <h2 className="text-xl font-bold text-foreground mb-4">5. FEES, PAYMENTS, AND BILLING</h2>
+            <div className="space-y-4 text-muted-foreground">
+              <p>
+                <strong>5.1</strong> All fee payments must be made in advance and are non-negotiable except as expressly governed under the Refund & Cancellation Policy.
+              </p>
+              <p>
+                <strong>5.2</strong> Non-payment automatically authorizes the Company to suspend access to services without liability.
+              </p>
+              <p>
+                <strong>5.3</strong> The Company is not responsible for the financial arrangements, agreements, or disputes between Drivers and Van Owners.
+              </p>
+            </div>
+          </section>
+
+          {/* Section 6 */}
+          <section>
+            <h2 className="text-xl font-bold text-foreground mb-4">6. DISCLAIMERS & LIMITATION OF LIABILITY</h2>
+            <div className="space-y-4 text-muted-foreground">
+              <p>
+                <strong>6.1</strong> The Company expressly disclaims all liabilities, whether direct, indirect, incidental, consequential, exemplary, or punitive, arising out of or connected with:
+              </p>
+              <ul className="list-none space-y-2 ml-6">
+                <li>(a) vehicular accidents, breakdowns, delays, or operational lapses;</li>
+                <li>(b) driver behaviour, negligence, misconduct, or omissions;</li>
+                <li>(c) route deviations, traffic congestion, weather disruptions, or unforeseeable events;</li>
+                <li>(d) loss of data, unauthorized access, or technical failures.</li>
+              </ul>
+              <p>
+                <strong>6.2</strong> Under no circumstances shall the aggregate liability of the Company exceed the total subscription amount paid by the User for the month in which the claim arises.
+              </p>
+              <p>
+                <strong>6.3</strong> The User expressly acknowledges that the Company does not assume any legal or supervisory responsibility over the transportation activity itself.
+              </p>
+            </div>
+          </section>
+
+          {/* Section 7 */}
+          <section>
+            <h2 className="text-xl font-bold text-foreground mb-4">7. INDEMNIFICATION</h2>
+            <div className="space-y-4 text-muted-foreground">
+              <p>
+                <strong>7.1</strong> The User agrees to indemnify, defend, and hold harmless the Company, its directors, employees, affiliates, and contractors from any claims, damages, losses, penalties, liabilities, or expenses arising out of:
+              </p>
+              <ul className="list-none space-y-2 ml-6">
+                <li>(a) misuse or unauthorized use of the Platform;</li>
+                <li>(b) breach of these Terms;</li>
+                <li>(c) negligence or misconduct by the User;</li>
+                <li>(d) disputes between Parents, Drivers, Van Owners, or Schools.</li>
+              </ul>
+            </div>
+          </section>
+
+          {/* Section 8 */}
+          <section>
+            <h2 className="text-xl font-bold text-foreground mb-4">8. SUSPENSION AND TERMINATION</h2>
+            <div className="space-y-4 text-muted-foreground">
+              <p>
+                <strong>8.1</strong> The Company may suspend or terminate User access without prior notice in the event of:
+              </p>
+              <ul className="list-none space-y-2 ml-6">
+                <li>(a) policy violations;</li>
+                <li>(b) fraudulent or misleading information;</li>
+                <li>(c) misuse of GPS data;</li>
+                <li>(d) behaviour jeopardizing safety.</li>
+              </ul>
+              <p>
+                <strong>8.2</strong> Termination shall not obligate the Company to refund any fees unless explicitly permitted under the Refund & Cancellation Policy.
+              </p>
+            </div>
+          </section>
+
+          {/* Section 9 */}
+          <section>
+            <h2 className="text-xl font-bold text-foreground mb-4">9. GOVERNING LAW AND JURISDICTION</h2>
+            <div className="space-y-4 text-muted-foreground">
+              <p>
+                <strong>9.1</strong> These Terms shall be governed by and construed in accordance with the laws of India.
+              </p>
+              <p>
+                <strong>9.2</strong> Exclusive jurisdiction for disputes rests with courts located in Delhi.
+              </p>
+            </div>
+          </section>
+
+          {/* Section 10 */}
+          <section>
+            <h2 className="text-xl font-bold text-foreground mb-4">10. SEVERABILITY</h2>
+            <div className="space-y-4 text-muted-foreground">
+              <p>
+                <strong>10.1</strong> If any clause herein is adjudicated invalid, the remaining provisions shall remain in full force and effect.
+              </p>
+            </div>
+          </section>
+
+          {/* End */}
+          <div className="pt-8 border-t border-border text-center text-muted-foreground">
+            <p className="font-medium">END OF DOCUMENT</p>
           </div>
         </div>
-      </div>
+      </main>
+
+      <Footer />
     </div>
   );
 };

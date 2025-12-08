@@ -1,9 +1,9 @@
-import { 
-  Shield, 
-  MapPin, 
-  Clock, 
-  CreditCard, 
-  Phone, 
+import {
+  Shield,
+  MapPin,
+  Clock,
+  CreditCard,
+  Phone,
   Star,
   Users,
   Map,
@@ -91,7 +91,7 @@ const Features = () => {
           {features.map((feature, index) => {
             const IconComponent = feature.icon;
             return (
-              <div 
+              <div
                 key={index}
                 className="bg-card p-6 rounded-xl shadow-soft hover:shadow-medium transition-all duration-300 hover:scale-105 group"
                 style={{ animationDelay: `${index * 0.1}s` }}
@@ -110,22 +110,67 @@ const Features = () => {
           })}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="text-center mt-16">
-          <div className="bg-gradient-primary p-8 rounded-2xl shadow-strong">
-            <h3 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-4">
-              Ready to Experience Safe School Transport?
-            </h3>
-            <p className="text-primary-foreground/90 mb-6 max-w-2xl mx-auto">
-              Join thousands of satisfied parents who trust us with their children's daily commute.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-background text-primary px-8 py-3 rounded-lg font-semibold hover:bg-background/90 transition-colors">
-                Start Your Free Trial
-              </button>
-              <button className="border-2 border-background text-background px-8 py-3 rounded-lg font-semibold hover:bg-background hover:text-primary transition-colors">
-                View Pricing Plans
-              </button>
+        {/* QR Code Download Section - Uber Style */}
+        <div className="mt-20 bg-card rounded-2xl shadow-medium p-8 md:p-12">
+          <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-10 text-center md:text-left">
+            It's easier in the apps
+          </h3>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            {/* Parent App QR */}
+            <div className="flex items-center gap-6 group cursor-pointer hover:bg-muted/50 p-4 rounded-xl transition-colors">
+              <div className="flex-shrink-0 w-28 h-28 bg-white rounded-xl p-2 shadow-soft flex items-center justify-center border border-border">
+                {/* QR Code Placeholder - Replace with actual QR code image */}
+                <img
+                  src="/qr-parent-app.png"
+                  alt="Scan to download Parent App"
+                  className="w-full h-full object-contain"
+                  onError={(e) => {
+                    // Fallback to a placeholder if image not found
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    target.parentElement!.innerHTML = '<div class="w-full h-full bg-muted rounded flex items-center justify-center text-xs text-muted-foreground text-center p-2">Add QR Code</div>';
+                  }}
+                />
+              </div>
+              <div className="flex-grow">
+                <h4 className="text-lg font-semibold text-foreground mb-1">Download the Parent app</h4>
+                <p className="text-sm text-muted-foreground">Scan to download</p>
+              </div>
+              <div className="flex-shrink-0 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </div>
+            </div>
+
+            {/* Driver App QR */}
+            <div className="flex items-center gap-6 group cursor-pointer hover:bg-muted/50 p-4 rounded-xl transition-colors">
+              <div className="flex-shrink-0 w-28 h-28 bg-white rounded-xl p-2 shadow-soft flex items-center justify-center border border-border">
+                {/* QR Code Placeholder - Replace with actual QR code image */}
+                <img
+                  src="/qr-driver-app.png"
+                  alt="Scan to download Driver App"
+                  className="w-full h-full object-contain"
+                  onError={(e) => {
+                    // Fallback to a placeholder if image not found
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    target.parentElement!.innerHTML = '<div class="w-full h-full bg-muted rounded flex items-center justify-center text-xs text-muted-foreground text-center p-2">Add QR Code</div>';
+                  }}
+                />
+              </div>
+              <div className="flex-grow">
+                <h4 className="text-lg font-semibold text-foreground mb-1">Download the Driver app</h4>
+                <p className="text-sm text-muted-foreground">Scan to download</p>
+              </div>
+              <div className="flex-shrink-0 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </div>
             </div>
           </div>
         </div>
