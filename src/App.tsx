@@ -16,6 +16,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import RefundPolicy from "./pages/RefundPolicy";
 import SafetyPolicy from "./pages/SafetyPolicy";
 import TermsAndConditions from "./pages/TermsAndConditions";
+import News from "./pages/News";
 import VanOwnerAgreement from "./pages/VanOwnerAgreement";
 
 const queryClient = new QueryClient();
@@ -41,6 +42,7 @@ const App = () => (
           <Route path="/refund-policy" element={<RefundPolicy />} />
           <Route path="/account-deletion" element={<AccountDeletion />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/news" element={<News />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

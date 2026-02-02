@@ -53,6 +53,12 @@ const Header = () => {
           >
             Contact
           </Link>
+          <Link
+            to="/news"
+            className="text-foreground hover:text-primary transition-colors"
+          >
+            News
+          </Link>
         </nav>
 
         {/* Desktop Contact Info & CTA */}
@@ -125,6 +131,13 @@ const Header = () => {
                   className="text-lg font-medium text-foreground hover:text-primary transition-colors py-2 border-b border-border"
                 >
                   Contact
+                </Link>
+                <Link
+                  to="/news"
+                  onClick={closeSheet}
+                  className="text-lg font-medium text-foreground hover:text-primary transition-colors py-2 border-b border-border"
+                >
+                  News
                 </Link>
                 <Link
                   to="/downloads"
